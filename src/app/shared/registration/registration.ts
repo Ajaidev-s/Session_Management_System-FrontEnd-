@@ -9,7 +9,6 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./registration.css'],
   standalone: true, // This is needed for standalone components
   imports:[ReactiveFormsModule,CommonModule]
-
 })
 export class Registration implements OnInit {
   @Input() isOpen: boolean = false;
@@ -19,6 +18,7 @@ export class Registration implements OnInit {
 
   registerForm!: FormGroup;
   registerError: string | null = null;
+  isLoading: boolean = false; // ✅ ADDED: Loading state for form submission
 
   constructor(private fb: FormBuilder, private authService: AuthService) {}
 
@@ -44,6 +44,10 @@ export class Registration implements OnInit {
       return;
     }
 
+    // ✅ ADDED: Set loading state to true when starting registration
+    this.isLoading = true;
+    this.registerError = null; // Clear any previous errors
+
     const formValue = this.registerForm.value;
     const payload = {
       firstName: formValue.firstName,
@@ -55,14 +59,16 @@ export class Registration implements OnInit {
 
     this.authService.register(payload).subscribe({
       next: (res) => {
+        this.isLoading = false; // ✅ ADDED: Reset loading state on success
         this.registerError = null;
         this.registrationSuccess.emit();
         this.onClose();
         alert('Registration successful!');
       },
       error: (err) => {
+        this.isLoading = false; // ✅ ADDED: Reset loading state on error
         console.error(err);
-        this.registerError = err.error?.message || 'Registration failed';
+        this.registerError = err.error?.message || 'Registration failed. Please try again.'; // ✅ IMPROVED: Better error message
       }
     });
   }
@@ -70,6 +76,39 @@ export class Registration implements OnInit {
   onClose() {
     this.registerForm.reset();
     this.registerError = null;
+    this.isLoading = false; // ✅ ADDED: Reset loading state when closing modal
     this.closed.emit();
+  }
+
+  // ✅ ADDED: Helper method to check if a form field has errors
+  hasFieldError(fieldName: string): boolean {
+    const field = this.registerForm.get(fieldName);
+    return !!(field && field.invalid && field.touched);
+  }
+
+  // ✅ ADDED: Helper method to get field error message
+  getFieldErrorMessage(fieldName: string): string {
+    const field = this.registerForm.get(fieldName);
+    if (!field || !field.errors) return '';
+
+    if (field.errors['required']) {
+      switch (fieldName) {
+        case 'firstName': return 'First name is required (minimum 2 characters)';
+        case 'lastName': return 'Last name is required';
+        case 'email': return 'Email address is required';
+        case 'password': return 'Password is required';
+        case 'confirmPassword': return 'Please confirm your password';
+        default: return 'This field is required';
+      }
+    }
+
+    if (field.errors['minlength']) {
+      if (fieldName === 'firstName') return 'First name must be at least 2 characters long';
+      if (fieldName === 'password') return 'Password must be at least 6 characters long';
+    }
+
+    if (field.errors['email']) return 'Please enter a valid email address';
+
+    return 'Invalid input';
   }
 }
