@@ -11,7 +11,6 @@ import { RouterOutlet } from '@angular/router';
 export class StudentDashboardComponent {
 
   isSidebarOpen = false;
-
   toggleSidebar() {
     this.isSidebarOpen = !this.isSidebarOpen;
     const sidebar = document.getElementById('sidebar');
