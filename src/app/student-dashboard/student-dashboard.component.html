@@ -1,0 +1,236 @@
+<!-- Top Navigation Bar -->
+    <nav class="top-navbar">
+        <div class="top-nav-container">
+            <button class="mobile-menu-btn" (click)="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                LearnHub
+            </div>
+
+            <div class="nav-center">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search sessions, trainers, topics...">
+                </div>
+            </div>
+
+            <div class="nav-right">
+                <div class="nav-icon">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge"></span>
+                </div>
+                
+                <div class="nav-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+
+                <div class="user-profile">
+                    <div class="user-avatar">JD</div>
+                    <div class="user-info">
+                        <div class="user-name">John Doe</div>
+                        <div class="user-role">Student</div>
+                    </div>
+                    <i class="fas fa-chevron-down" style="color: #a0aec0; font-size: 0.8rem;"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" [class.open]="isSidebarOpen" id="sidebar">
+        <div class="sidebar-section">
+            <div class="sidebar-title">Main</div>
+            <ul class="sidebar-menu">
+                <li><a href="#" class="active"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="#"><i class="fas fa-calendar-alt"></i> My Sessions</a></li>
+                <li><a href="#"><i class="fas fa-search"></i> Browse Sessions</a></li>
+                <li><a href="#"><i class="fas fa-history"></i> Session History</a></li>
+            </ul>
+        </div>
+
+        <div class="sidebar-section">
+            <div class="sidebar-title">Learning</div>
+            <ul class="sidebar-menu">
+                <li><a href="#"><i class="fas fa-bookmark"></i> Bookmarked</a></li>
+                <li><a href="#"><i class="fas fa-star"></i> Favorites</a></li>
+                <li><a href="#"><i class="fas fa-certificate"></i> Certificates</a></li>
+                <li><a href="#"><i class="fas fa-chart-line"></i> Progress</a></li>
+            </ul>
+        </div>
+
+        <div class="sidebar-section">
+            <div class="sidebar-title">Account</div>
+            <ul class="sidebar-menu">
+                <li><a href="#"><i class="fas fa-user"></i> Profile</a></li>
+                <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                <li><a href="#"><i class="fas fa-credit-card"></i> Billing</a></li>
+                <li><a href="#"><i class="fas fa-question-circle"></i> Help & Support</a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <!-- Stats Overview -->
+        <div class="stats-row">
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                </div>
+                <div class="stat-value">12</div>
+                <div class="stat-label">Upcoming Sessions</div>
+                <div class="stat-change">+3 this week</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                </div>
+                <div class="stat-value">47</div>
+                <div class="stat-label">Completed Sessions</div>
+                <div class="stat-change">+5 this month</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                </div>
+                <div class="stat-value">28</div>
+                <div class="stat-label">Total Hours</div>
+                <div class="stat-change">This month</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                </div>
+                <div class="stat-value">5</div>
+                <div class="stat-label">Certificates Earned</div>
+                <div class="stat-change">+1 recently</div>
+            </div>
+        </div>
+
+        <!-- Dashboard Grid -->
+        <div class="dashboard-grid">
+            <!-- Upcoming Sessions -->
+            <div class="content-card">
+                <div class="card-header">
+                    <h3 class="card-title">Upcoming Sessions</h3>
+                    <a href="#" class="card-action">View all</a>
+                </div>
+                <div class="card-content">
+                    <div class="session-list">
+                        <div class="session-item">
+                            <div class="session-time">
+                                <div class="session-date">Today</div>
+                                <div class="session-hour">2:00 PM</div>
+                            </div>
+                            <div class="session-info">
+                                <div class="session-title">Advanced JavaScript Concepts</div>
+                                <div class="session-trainer">with Sarah Johnson</div>
+                            </div>
+                            <div class="session-status status-confirmed">Confirmed</div>
+                        </div>
+
+                        <div class="session-item">
+                            <div class="session-time">
+                                <div class="session-date">Tomorrow</div>
+                                <div class="session-hour">10:00 AM</div>
+                            </div>
+                            <div class="session-info">
+                                <div class="session-title">React Components Deep Dive</div>
+                                <div class="session-trainer">with Mike Chen</div>
+                            </div>
+                            <div class="session-status status-confirmed">Confirmed</div>
+                        </div>
+
+                        <div class="session-item">
+                            <div class="session-time">
+                                <div class="session-date">Thu</div>
+                                <div class="session-hour">4:00 PM</div>
+                            </div>
+                            <div class="session-info">
+                                <div class="session-title">Chess Strategy Fundamentals</div>
+                                <div class="session-trainer">with David Miller</div>
+                            </div>
+                            <div class="session-status status-pending">Pending</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="content-card">
+                <div class="card-header">
+                    <h3 class="card-title">Quick Actions</h3>
+                </div>
+                <div class="card-content">
+                    <div class="quick-actions">
+                        <a href="#" class="quick-action">
+                            <i class="fas fa-search"></i>
+                            <span>Browse Sessions</span>
+                        </a>
+                        <a href="#" class="quick-action">
+                            <i class="fas fa-calendar-plus"></i>
+                            <span>Book Session</span>
+                        </a>
+                        <a href="#" class="quick-action">
+                            <i class="fas fa-history"></i>
+                            <span>View History</span>
+                        </a>
+                        <a href="#" class="quick-action">
+                            <i class="fas fa-user-edit"></i>
+                            <span>Update Profile</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="content-card">
+            <div class="card-header">
+                <h3 class="card-title">Recent Activity</h3>
+                <a href="#" class="card-action">View all</a>
+            </div>
+            <div class="card-content">
+                <div class="session-list">
+                    <div class="session-item">
+                        <div class="session-time">
+                            <div class="session-date">2 days ago</div>
+                        </div>
+                        <div class="session-info">
+                            <div class="session-title">Completed: Python Data Structures</div>
+                            <div class="session-trainer">with Emma Wilson</div>
+                        </div>
+                        <div class="session-status status-confirmed">Completed</div>
+                    </div>
+
+                    <div class="session-item">
+                        <div class="session-time">
+                            <div class="session-date">1 week ago</div>
+                        </div>
+                        <div class="session-info">
+                            <div class="session-title">Completed: HTML & CSS Basics</div>
+                            <div class="session-trainer">with Alex Turner</div>
+                        </div>
+                        <div class="session-status status-confirmed">Completed</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <!-- <router-outlet></router-outlet> -->
