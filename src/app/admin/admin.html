@@ -1,0 +1,303 @@
+<!-- Top Navigation Bar -->
+<nav class="top-navbar">
+  <div class="top-nav-container">
+    <button class="mobile-menu-btn" (click)="toggleSidebar()">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="logo">
+      <i class="fas fa-graduation-cap"></i>
+      LearnHub
+      <span class="admin-badge">ADMIN</span>
+    </div>
+
+    <div class="nav-center">
+      <div class="search-bar">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="Search users, sessions, trainers..." />
+      </div>
+    </div>
+
+    <div class="nav-right">
+      <div class="nav-icon">
+        <i class="fas fa-bell"></i>
+        <span class="notification-badge"></span>
+      </div>
+      <div class="nav-icon">
+        <i class="fas fa-envelope"></i>
+      </div>
+
+      <div class="user-profile">
+        <div class="user-avatar">AD</div>
+        <div class="user-info">
+          <div class="user-name">Admin User</div>
+          <div class="user-role">Administrator</div>
+        </div>
+        <i class="fas fa-chevron-down" style="color: #a0aec0; font-size: 0.8rem"></i>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Sidebar Navigation -->
+<aside class="sidebar" id="sidebar" [class.open]="sidebarOpen">
+  <!-- Sidebar content unchanged -->
+  <div class="sidebar-section">
+    <div class="sidebar-title">Dashboard</div>
+    <ul class="sidebar-menu">
+      <li>
+        <a href="#" class="active"><i class="fas fa-tachometer-alt"></i> Overview</a>
+      </li>
+      <li>
+        <a href="#"><i class="fas fa-chart-bar"></i> Analytics</a>
+      </li>
+      <li>
+        <a href="#"><i class="fas fa-file-alt"></i> Reports</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="sidebar-section">
+    <div class="sidebar-title">Management</div>
+    <ul class="sidebar-menu">
+      <li>
+        <a href="#"><i class="fas fa-calendar-alt"></i> Sessions</a>
+      </li>
+      <li>
+        <a href="#"><i class="fas fa-users"></i> Users</a>
+      </li>
+      <li>
+        <a href="#"><i class="fas fa-chalkboard-teacher"></i> Trainers</a>
+      </li>
+      <li>
+        <a href="#"><i class="fas fa-book"></i> Courses</a>
+      </li>
+      <li>
+        <a href="#"><i class="fas fa-tags"></i> Categories</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="sidebar-section">
+    <div class="sidebar-title">Operations</div>
+    <ul class="sidebar-menu">
+      <li>
+        <a href="#"><i class="fas fa-credit-card"></i> Payments</a>
+      </li>
+      <li>
+        <a href="#"><i class="fas fa-star"></i> Reviews</a>
+      </li>
+      <li>
+        <a href="#"><i class="fas fa-ticket-alt"></i> Support</a>
+      </li>
+      <li>
+        <a href="#"><i class="fas fa-bullhorn"></i> Announcements</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="sidebar-section">
+    <div class="sidebar-title">System</div>
+    <ul class="sidebar-menu">
+      <li>
+        <a href="#"><i class="fas fa-cog"></i> Settings</a>
+      </li>
+      <li>
+        <a href="#"><i class="fas fa-shield-alt"></i> Security</a>
+      </li>
+      <li>
+        <a href="#"><i class="fas fa-database"></i> Backups</a>
+      </li>
+      <li>
+        <a href="#"><i class="fas fa-history"></i> Activity Logs</a>
+      </li>
+    </ul>
+  </div>
+</aside>
+
+<!-- Main Content Area -->
+<main class="main-content" (click)="closeSidebarOnOutsideClick($event)">
+  <!-- Keep the same dashboard header, stats, grid, quick actions -->
+  <!-- (No script tags, Angular handles logic in TS) -->
+  <!-- Dashboard Header -->
+  <div class="dashboard-header">
+    <h1 class="dashboard-title">Admin Dashboard</h1>
+    <p class="dashboard-subtitle">Monitor and manage your training platform</p>
+  </div>
+
+  <!-- Stats Overview -->
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-header">
+        <div class="stat-icon">
+          <i class="fas fa-users"></i>
+        </div>
+      </div>
+      <div class="stat-value">2,847</div>
+      <div class="stat-label">Total Users</div>
+      <div class="stat-change">+12% this month</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-header">
+        <div class="stat-icon">
+          <i class="fas fa-calendar-check"></i>
+        </div>
+      </div>
+      <div class="stat-value">156</div>
+      <div class="stat-label">Active Sessions</div>
+      <div class="stat-change">+8% this week</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-header">
+        <div class="stat-icon">
+          <i class="fas fa-chalkboard-teacher"></i>
+        </div>
+      </div>
+      <div class="stat-value">89</div>
+      <div class="stat-label">Active Trainers</div>
+      <div class="stat-change">+5 new this month</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-header">
+        <div class="stat-icon">
+          <i class="fas fa-dollar-sign"></i>
+        </div>
+      </div>
+      <div class="stat-value">$24,580</div>
+      <div class="stat-label">Monthly Revenue</div>
+      <div class="stat-change">+15% vs last month</div>
+    </div>
+  </div>
+
+  <!-- Dashboard Grid -->
+  <div class="dashboard-grid">
+    <!-- Recent Sessions -->
+    <div class="content-card">
+      <div class="card-header">
+        <h3 class="card-title">Recent Sessions</h3>
+        <a href="#" class="card-action">Manage All</a>
+      </div>
+      <div class="card-content">
+        <div class="session-list">
+          <div class="session-item">
+            <div class="session-time">
+              <div class="session-date">Today</div>
+              <div class="session-hour">2:00 PM</div>
+            </div>
+            <div class="session-info">
+              <div class="session-title">Advanced JavaScript Concepts</div>
+              <div class="session-trainer">Trainer: Sarah Johnson</div>
+              <div class="session-students">12 students enrolled</div>
+            </div>
+            <div class="session-status status-active">Active</div>
+          </div>
+
+          <div class="session-item">
+            <div class="session-time">
+              <div class="session-date">Today</div>
+              <div class="session-hour">4:30 PM</div>
+            </div>
+            <div class="session-info">
+              <div class="session-title">React Components Deep Dive</div>
+              <div class="session-trainer">Trainer: Mike Chen</div>
+              <div class="session-students">8 students enrolled</div>
+            </div>
+            <div class="session-status status-active">Active</div>
+          </div>
+
+          <div class="session-item">
+            <div class="session-time">
+              <div class="session-date">Tomorrow</div>
+              <div class="session-hour">10:00 AM</div>
+            </div>
+            <div class="session-info">
+              <div class="session-title">Chess Strategy Fundamentals</div>
+              <div class="session-trainer">Trainer: David Miller</div>
+              <div class="session-students">15 students enrolled</div>
+            </div>
+            <div class="session-status status-pending">Pending</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- System Alerts -->
+    <div class="content-card">
+      <div class="card-header">
+        <h3 class="card-title">System Alerts</h3>
+        <a href="#" class="card-action">View All</a>
+      </div>
+      <div class="card-content">
+        <div class="alert-list">
+          <div class="alert-item">
+            <div class="alert-icon">
+              <i class="fas fa-user-plus"></i>
+            </div>
+            <div class="alert-info">
+              <div class="alert-title">Trainer Applications Pending</div>
+              <div class="alert-desc">5 new trainer applications awaiting review</div>
+            </div>
+          </div>
+
+          <div class="alert-item">
+            <div class="alert-icon">
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+            <div class="alert-info">
+              <div class="alert-title">Low Session Rating</div>
+              <div class="alert-desc">JavaScript Basics session received 2.1/5 rating</div>
+            </div>
+          </div>
+
+          <div class="alert-item">
+            <div class="alert-icon">
+              <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <div class="alert-info">
+              <div class="alert-title">Payment Issues</div>
+              <div class="alert-desc">3 failed payment attempts need attention</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick Actions -->
+  <div class="content-card">
+    <div class="card-header">
+      <h3 class="card-title">Quick Actions</h3>
+    </div>
+    <div class="card-content">
+      <div class="quick-actions">
+        <a href="#" class="quick-action">
+          <i class="fas fa-plus"></i>
+          <span>Add New Session</span>
+        </a>
+        <a href="#" class="quick-action">
+          <i class="fas fa-user-plus"></i>
+          <span>Register Trainer</span>
+        </a>
+        <a href="#" class="quick-action">
+          <i class="fas fa-chart-line"></i>
+          <span>View Analytics</span>
+        </a>
+        <a href="#" class="quick-action">
+          <i class="fas fa-cog"></i>
+          <span>System Settings</span>
+        </a>
+        <a href="#" class="quick-action">
+          <i class="fas fa-bullhorn"></i>
+          <span>Send Announcement</span>
+        </a>
+        <a href="#" class="quick-action">
+          <i class="fas fa-download"></i>
+          <span>Export Reports</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</main>
