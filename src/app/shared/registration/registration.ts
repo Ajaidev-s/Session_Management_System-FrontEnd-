@@ -1,16 +1,17 @@
-import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit ,ViewChild} from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl, ValidatorFn, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
-
+import { ToastComponent} from '../toast/toast';
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.html',
   styleUrls: ['./registration.css'],
   standalone: true, // This is needed for standalone components
-  imports:[ReactiveFormsModule,CommonModule]
+  imports: [ReactiveFormsModule, CommonModule, ToastComponent]
 })
 export class Registration implements OnInit {
+  @ViewChild(ToastComponent) toast!: ToastComponent;
   @Input() isOpen: boolean = false;
   @Input() roleId: number = 2; // Default to student role
   @Output() closed = new EventEmitter<void>();
@@ -63,7 +64,12 @@ export class Registration implements OnInit {
         this.registerError = null;
         this.registrationSuccess.emit();
         this.onClose();
-        alert('Registration successful!');
+        // alert('Registration successful!');
+        //Show success toast
+        this.toast.message = 'User registration successful 🎉';
+        this.toast.type = 'success';
+        this.toast.show = true;
+        this.toast.hideAfterDelay();
       },
       error: (err) => {
         this.isLoading = false; // ✅ ADDED: Reset loading state on error
@@ -85,6 +91,7 @@ export class Registration implements OnInit {
     const field = this.registerForm.get(fieldName);
     return !!(field && field.invalid && field.touched);
   }
+  
 
   // ✅ ADDED: Helper method to get field error message
   getFieldErrorMessage(fieldName: string): string {
@@ -111,4 +118,6 @@ export class Registration implements OnInit {
 
     return 'Invalid input';
   }
+
+  
 }

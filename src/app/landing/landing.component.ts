@@ -14,7 +14,7 @@ export class LandingComponent {
   
   isRegistrationModalOpen=true;
   isLoginModalOpen = false;
-  registrationRoleId=2;
+  registrationRoleId=1;
 
   constructor(private router : Router){}
 
@@ -25,12 +25,12 @@ export class LandingComponent {
 
  
   openStudentRegistration() {
-    this.registrationRoleId = 2; // Student role
+    this.registrationRoleId = 1; // Student role
     this.isRegistrationModalOpen = true;
   }
 
   openTrainerRegistration() {
-    this.registrationRoleId = 3; // Trainer role (assuming 3 is trainer, adjust as needed)
+    this.registrationRoleId = 2; // Trainer role 
     this.isRegistrationModalOpen = true;
   }
 
